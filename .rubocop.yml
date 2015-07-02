@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'Rakefile'
+    - 'Gemfile'
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/seeds.rb'
+    - 'test/test_helper.rb'
+Documentation:
+  Enabled: false
