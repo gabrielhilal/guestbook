@@ -1,0 +1,39 @@
+<% flash.each do |key, value| %>
+  <div class="flash-<%= key %>"><%= value %></div>
+<% end %>
+
+<% if @entry.errors.any? %>
+  <% @entry.errors.full_messages.each do |msg| %>
+    <div class="flash-error"><%= msg %></div>
+  <% end %>
+<% end %>
+
+<%= form_for @entry do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :message %>
+  <%= f.text_area :message, cols: 50, rows: 3 %>
+  <%= f.submit 'Submit' %>
+<% end %>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Message</th>
+      <th>Time Ago</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.name %></td>
+        <td><%= entry.message %></td>
+        <td><%= time_ago_in_words(entry.created_at) %></td>
+        <td><%= button_to "delete", entry_path(entry), method: :delete %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
