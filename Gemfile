@@ -45,6 +45,8 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
 
   gem 'rubocop', require: false
 end
